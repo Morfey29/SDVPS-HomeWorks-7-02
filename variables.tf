@@ -1,59 +1,23 @@
-variable "string" {
+variable "flow" {
   type    = string
-  default = "some string"
-}
-variable "number" {
-  type    = number
-  default = 1
-}
-variable "list_of_strings" {
-  type    = list(string)
-  default = ["a", "b", "c"]
-}
-variable "list_of_numbers" {
-  type    = list(number)
-  default = [1, 2, 3]
+  default = "24-01"
 }
 
-variable "bool" {
-  type    = bool
-  default = true
+variable "cloud_id" {
+  type    = string
+  default = "b1gn3ndpua1j6jaabf79"
+}
+variable "folder_id" {
+  type    = string
+  default = "b1gfu61oc15cb99nqmfe"
 }
 
-variable "map" {
-  type = map(string)
+variable "test" {
+  type = map(number)
   default = {
-    name       = "John"
-    surname    = "Connor"
-    try_number = 10
+    cores         = 2
+    memory        = 1
+    core_fraction = 20
   }
 }
 
-variable "containers" {
-  type = map(object({
-    name  = string
-    image = string
-    ports = object({
-      external = number
-      internal = number
-    })
-  }))
-  default = {
-    nginx = {
-      name  = "reverse-proxy-nginx"
-      image = "nginx:1.21.1"
-      ports = {
-        internal = 80
-        external = 1080
-      }
-    },
-    wordpress = {
-      name  = "web-wordpress"
-      image = "wordpress:latest"
-      ports = {
-        internal = 80
-        external = 2080
-      }
-    }
-  }
-}
